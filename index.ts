@@ -29,10 +29,29 @@ type CustomValueKey = string & {}
 
 /**
  * @link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#editing_keys
- * The types are the standard key values that can be in event.key (KeyboardEvent.key),
+ * The types are the standard key values that can be in `event.key` ({@link KeyboardEvent.key}).
+ 
+ * This type performs validation using the currently known string keys, meaning `string` cannot be assigned to it.
+ * This also means `event.key` must be casted to this type, as it's typed as `string`.
+ * For a non-strict variant, which offers IntelliSense and no validation, see {@link KeyboardEventKey}.
  *
- * usage:
- * const actionKey : KeyboardEventKey = "ArrowUp" //<- IntelliSense
- * keyboard key behaviour
+ * Usage:
+ * ```ts
+ * let actionKey : KeyboardEventKey = "ArrowUp" // <- IntelliSense
+ * actionKey = "invalid" // error!
+ * ```
  */
-export declare type KeyboardEventKey = DeprecatedWhitespaceKey | SpecialValueKey | ModifierKeys | WhitespaceKeys | NavigationKeys | EditingKeys | UIKeys | DeviceKeys | IMECompositionKeys | LinuxDeadKeys | FunctionKeys | PhoneKeys | MultimediaKeys | TVControlKeys | MediaControllerKeys | SpeechRecognitionKeys | DocumentKeys | ApplicationSelectorKeys | BrowserControlKeys | NumericKeypadKeys | UpperAlpha | LowerAlpha | KoreanKeyboardsOnly | CustomValueKey
+export declare type KeyboardEventStrictKey = DeprecatedWhitespaceKey | SpecialValueKey | ModifierKeys | WhitespaceKeys | NavigationKeys | EditingKeys | UIKeys | DeviceKeys | IMECompositionKeys | LinuxDeadKeys | FunctionKeys | PhoneKeys | MultimediaKeys | TVControlKeys | MediaControllerKeys | SpeechRecognitionKeys | DocumentKeys | ApplicationSelectorKeys | BrowserControlKeys | NumericKeypadKeys | UpperAlpha | LowerAlpha | KoreanKeyboardsOnly
+
+/**
+ * @link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#editing_keys
+ * The types are the standard key values that can be in `event.key` ({@link KeyboardEvent.key}).
+ 
+ * This type allows any string value, offering IntelliSense only (no validation), for a strict variant see {@link KeyboardEventStrictKey}.
+ *
+ * Usage:
+ * ```ts
+ * let actionKey : KeyboardEventKey = "ArrowUp" // <- IntelliSense
+ * ```
+ */
+export declare type KeyboardEventKey = KeyboardEventStrictKey | CustomValueKey
