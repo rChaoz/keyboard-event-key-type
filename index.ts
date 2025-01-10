@@ -25,7 +25,7 @@ type KoreanKeyboardsOnly = "HangulMode" | "HanjaMode" | "JunjaMode"
  */
 type DeprecatedWhitespaceKey = "Spacebar"
 type SpecialValueKey = "Unidentified"
-type CustomValueKey = string
+type CustomValueKey = string & {}
 
 /**
  * @link https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/key/Key_Values#editing_keys
